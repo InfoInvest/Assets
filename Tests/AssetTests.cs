@@ -1,4 +1,4 @@
-namespace InfoInvest.Assets.Tests
+namespace Tests
 {
     public class AssetTests
     {

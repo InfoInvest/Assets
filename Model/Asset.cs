@@ -1,4 +1,4 @@
-﻿namespace InfoInvest.Assets.Model
+﻿namespace Model
 {
     public class Asset
     {
