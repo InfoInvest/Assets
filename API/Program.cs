@@ -1,7 +1,10 @@
+using Core.API;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddEndPointDefinitions(typeof(Program));
 
 var app = builder.Build();
 
@@ -11,6 +14,5 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.MapGet("/upperCaseInator", (string text) => text.ToUpper()).WithName("GetWeatherForecast");
-
+app.UseEndpointDefinitions();
 app.Run();
