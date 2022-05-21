@@ -6,16 +6,16 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["InfoInvest.Assets.API/InfoInvest.Assets.API.csproj", "InfoInvest.Assets.API/"]
-RUN dotnet restore "InfoInvest.Assets.API/InfoInvest.Assets.API.csproj"
+COPY ["API/Assets.API.csproj", "API/"]
+RUN dotnet restore "API/Assets.API.csproj"
 COPY . .
-WORKDIR "/src/InfoInvest.Assets.API"
-RUN dotnet build "InfoInvest.Assets.API.csproj" -c Release -o /app/build
+WORKDIR "/src/API"
+RUN dotnet build "Assets.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "InfoInvest.Assets.API.csproj" -c Release -o /app/publish
+RUN dotnet publish "Assets.API.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "InfoInvest.Assets.API.dll"]
+ENTRYPOINT ["dotnet", "Assets.API.dll"]
