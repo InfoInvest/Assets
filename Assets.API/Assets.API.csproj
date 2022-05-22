@@ -8,14 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="nuget.config" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="nuget.config" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="InfoInvest.Core.API" Version="4.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
