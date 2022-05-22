@@ -13,7 +13,7 @@ RUN dotnet restore "Assets.API/Assets.API.csproj"
     
 COPY . .
 WORKDIR "/src/Assets.API"
-RUN dotnet build "Assets.API.csproj" -c Release -o /app/build
+RUN dotnet build "Assets.API/Assets.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "Assets.API.csproj" -c Release -o /app/publish
