@@ -48,6 +48,7 @@ jobs:
       
       - name: List directory
         run: | 
+          ls -a
           cd API
           ls -a
       
