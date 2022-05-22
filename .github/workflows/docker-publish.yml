@@ -46,6 +46,9 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       
+      - name: Auth github nuget registry
+        run: dotnet nuget add source --username Lothyriel --password ${{ secrets.READ_NUGET_PAT }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/InfoInvest/index.json"
+      
       - name: Build and push Docker image
         id: build-and-push
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
