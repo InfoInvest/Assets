@@ -1,4 +1,7 @@
+# syntax=docker/dockerfile:1.2
+
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+RUN --mount=type=secret,id=read_nuget_pat cat /run/secrets/read_nuget_pat
 WORKDIR /app
 EXPOSE 80
 
