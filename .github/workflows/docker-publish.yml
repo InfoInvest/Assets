@@ -54,6 +54,8 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          secrets: |
+            "read_nuget_pat=${{ secrets.READ_NUGET_PAT }}"
 
       - name: Sign the published Docker image
         if: ${{ github.event_name != 'pull_request' }}
