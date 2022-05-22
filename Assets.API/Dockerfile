@@ -7,12 +7,11 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["Assets.API.csproj", "Assets.API/"]
-RUN dotnet nuget add source github
+RUN dotnet nuget add source --username Lothyriel --password READ_NUGET_PAT --store-password-in-clear-text --name github "https://nuget.pkg.github.com/InfoInvest/index.json"
 RUN dotnet restore "Assets.API/Assets.API.csproj"
 
 COPY . .
 WORKDIR "/src/Assets.API"
-RUN dotnet nuget add source --username Lothyriel --password READ_NUGET_PAT --store-password-in-clear-text --name github "https://nuget.pkg.github.com/InfoInvest/index.json"
 RUN dotnet build "Assets.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
