@@ -47,7 +47,9 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       
       - name: List directory
-        run: ls -a
+        run: | 
+          cd API
+          ls -a
       
       - name: Build and push Docker image
         id: build-and-push
