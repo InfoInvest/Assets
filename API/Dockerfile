@@ -4,13 +4,13 @@ WORKDIR /app
 EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR "/src/API"
-RUN dotnet restore "Assets.API.csproj"
+WORKDIR /src
+RUN dotnet restore "API/Assets.API.csproj"
 
-RUN dotnet build "Assets.API.csproj" -c Release -o /app/build
+RUN dotnet build "API/Assets.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Assets.API.csproj" -c Release -o /app/publish
+RUN dotnet publish "API/Assets.API.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
