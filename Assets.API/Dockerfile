@@ -7,7 +7,8 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["Assets.API.csproj", "Assets.API/"]
-RUN dotnet restore "Assets.API/Assets.API.csproj" --api-key ${{ secrets.GITHUB_TOKEN }} --source "https://nuget.pkg.github.com/InfoInvest/index.json"
+RUN nuget source add "https://nuget.pkg.github.com/InfoInvest/index.json"
+RUN dotnet restore "Assets.API/Assets.API.csproj"
 
 COPY . .
 WORKDIR "/src/Assets.API"
