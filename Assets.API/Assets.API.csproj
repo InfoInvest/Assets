@@ -5,8 +5,15 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="nuget.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="nuget.config" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="InfoInvest.Core.API" Version="4.0.0" />
