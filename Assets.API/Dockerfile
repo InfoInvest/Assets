@@ -7,7 +7,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["Assets.API.csproj", "Assets.API/"]
-RUN dotnet restore "Assets.API.csproj"
+RUN dotnet restore "Assets.API/Assets.API.csproj"
 COPY . .
 WORKDIR "/src/Assets.API"
 RUN dotnet build "Assets.API.csproj" -c Release -o /app/build
