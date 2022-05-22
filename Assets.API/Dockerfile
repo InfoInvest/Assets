@@ -1,4 +1,5 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+FROM alpine
 RUN --mount=type=secret,id=READ_NUGET_PAT \
     export READ_NUGET_PAT=$(cat /run/secrets/READ_NUGET_PAT) && \
     yarn gen
