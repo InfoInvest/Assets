@@ -1,14 +1,13 @@
 # syntax=docker/dockerfile:1.2
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-RUN --mount=type=secret,id=read_nuget_pat cat /run/secrets/read_nuget_pat
 WORKDIR /app
 EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["Assets.API.csproj", "Assets.API/"]
-RUN --mount=type=secret,id=read_nuget_pat cat /run/secrets/read_nuget_pat
+RUN --mount=type=secret,id=read_nuget_pat dotnet nuget add source --username Lothyriel --password cat /run/secrets/read_nuget_pat --store-password-in-clear-text --name github "https://nuget.pkg.github.com/InfoInvest/index.json"
 RUN dotnet restore "Assets.API/Assets.API.csproj"
 
 COPY . .
