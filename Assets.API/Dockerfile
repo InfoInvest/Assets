@@ -11,8 +11,8 @@ RUN --mount=type=secret,id=read_nuget_pat \
     dotnet nuget add source --username Lothyriel --password $(cat /run/secrets/read_nuget_pat) --store-password-in-clear-text --name github "https://nuget.pkg.github.com/InfoInvest/index.json"
 RUN dotnet restore "Assets.API/Assets.API.csproj"
     
-COPY . .
 WORKDIR "/src/Assets.API"
+COPY . .
 RUN dotnet build "Assets.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
