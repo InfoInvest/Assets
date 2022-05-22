@@ -8,6 +8,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["Assets.API.csproj", "Assets.API/"]
+RUN --mount=type=secret,id=read_nuget_pat cat /run/secrets/read_nuget_pat
 RUN dotnet restore "Assets.API/Assets.API.csproj"
 
 COPY . .
