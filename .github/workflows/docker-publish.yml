@@ -49,7 +49,7 @@ jobs:
       - name: List directory
         run: | 
           ls -a
-          cd API
+          cd Assets.API
           ls -a
       
       - name: Build and push Docker image
