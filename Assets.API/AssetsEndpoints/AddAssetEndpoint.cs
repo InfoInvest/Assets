@@ -9,7 +9,7 @@ namespace Assets.API.AssetsEndpoints
     {
         public void DefineEndpoints(WebApplication app)
         {
-            app.MapPost("/api/assets/addAssets", AddAsset);
+            app.MapPost("/api/assets/addAsset", AddAsset);
         }
 
         private async Task<Guid> AddAsset(IMediator mediator, AddAssetVM asset)
