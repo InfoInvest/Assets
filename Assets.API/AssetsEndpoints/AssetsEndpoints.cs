@@ -1,4 +1,6 @@
-﻿using Core.API;
+﻿using Assets.Model;
+using Core.API;
+using MediatR;
 
 namespace API.AssetsEndpoints
 {
@@ -6,17 +8,12 @@ namespace API.AssetsEndpoints
     {
         public void DefineEndpoints(WebApplication app)
         {
-            app.MapGet("api/test", GetAsset);
+            app.MapGet("/api/assets/getAssets", GetAssets);
         }
 
-        public void DefineServices(IServiceCollection services)
+        private async Task<List<Asset>> GetAssets(IMediator mediator, int start, int end)
         {
-            
-        }
-
-        private async Task<object> GetAsset()
-        {
-            return await Task.FromResult("teste funfando");
+            return await mediator.Send(new GetAssetsRequest(start, end));
         }
     }
 }

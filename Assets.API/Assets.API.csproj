@@ -5,12 +5,22 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <UserSecretsId>0edcdb14-b24a-47ed-8a89-c874e5910b25</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="InfoInvest.Core.API" Version="4.0.0" />
+    <PackageReference Include="InfoInvest.Core.API" Version="6.0.0" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Assets.Infra\Assets.Infra.csproj" />
+    <ProjectReference Include="..\Assets.Model\Assets.Model.csproj" />
   </ItemGroup>
 
 </Project>
