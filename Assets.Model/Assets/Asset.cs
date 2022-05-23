@@ -1,8 +1,10 @@
-﻿namespace Assets.Model
+﻿using Core.Model;
+
+namespace Assets.Model
 {
-    public class Asset
+    public class Asset : Entity
     {
-        public Asset(string name, Group group)
+        public Asset(Guid id ,string name, Group group) : base(id)
         {
             Name = name;
             Group = group;

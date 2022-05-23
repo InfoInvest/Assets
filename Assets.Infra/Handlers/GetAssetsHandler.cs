@@ -1,4 +1,5 @@
 ﻿using Assets.Model;
+using Assets.Model.Requests;
 using MediatR;
 
 namespace Assets.Infra.Handlers
@@ -14,7 +15,7 @@ namespace Assets.Infra.Handlers
 
         public async Task<List<Asset>> Handle(GetAssetsRequest request, CancellationToken cancellationToken)
         {
-            return await Task.FromResult(_repository.GetRange(request.Start, request.End));
+            return await Task.Run(() => _repository.GetRange(request.Start, request.End));
         }
     }
 }

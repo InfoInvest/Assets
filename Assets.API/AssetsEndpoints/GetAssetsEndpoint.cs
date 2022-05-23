@@ -1,10 +1,11 @@
 ﻿using Assets.Model;
+using Assets.Model.Requests;
 using Core.API;
 using MediatR;
 
 namespace API.AssetsEndpoints
 {
-    public class AssetsEndpoints : IEndpointDefinition
+    public class GetAssetsEndpoint : IEndpointDefinition
     {
         public void DefineEndpoints(WebApplication app)
         {

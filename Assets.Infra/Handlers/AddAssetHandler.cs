@@ -1,9 +1,10 @@
 ﻿using Assets.Model;
+using Assets.Model.Requests;
 using MediatR;
 
 namespace Assets.Infra.Handlers
 {
-    public class AddAssetHandler : IRequestHandler<AddAssetRequest>
+    public class AddAssetHandler : IRequestHandler<AddAssetRequest, Guid>
     {
         private readonly IAssetRepository _repository;
 
@@ -11,10 +12,15 @@ namespace Assets.Infra.Handlers
         {
             _repository = repository;
         }
-        public async Task<Unit> Handle(AddAssetRequest request, CancellationToken ct)
+        public async Task<Guid> Handle(AddAssetRequest request, CancellationToken ct)
         {
-            await Task.Run(() => _repository.Add(request.Asset), ct);
-            return Unit.Value;
+            var id = Guid.NewGuid();
+
+            var asset = new Asset(id, request.Asset.Name, request.Asset.Group); //poderia usar um Automapper aqui
+
+            await Task.Run(() => _repository.Add(asset), ct);
+
+            return id;
         }
     }
 }
