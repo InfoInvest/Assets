@@ -2,7 +2,7 @@
 using Assets.Model.Requests;
 using MediatR;
 
-namespace Assets.Infra.Handlers
+namespace Assets.API.Handlers
 {
     public class AddAssetHandler : IRequestHandler<AddAssetRequest, Guid>
     {
