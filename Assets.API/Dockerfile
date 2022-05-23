@@ -7,8 +7,6 @@ EXPOSE 5000
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["Assets.API/Assets.API.csproj", "Assets.API/"]
-COPY ["Assets.Infra/Assets.Infra.csproj", "Assets.Infra/"]
-COPY ["Assets.Model/Assets.Model.csproj", "Assets.Model/"]
 RUN --mount=type=secret,id=read_nuget_pat \
     dotnet nuget add source --username Lothyriel --password $(cat /run/secrets/read_nuget_pat) --store-password-in-clear-text --name github "https://nuget.pkg.github.com/InfoInvest/index.json"
 RUN dotnet restore "Assets.API/Assets.API.csproj"
