@@ -3,6 +3,12 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	  <PackageId>InfoInvest.Assets.Model</PackageId>
+	  <Version>1.0.0</Version>
+	  <Authors>João Xavier</Authors>
+	  <Company>Info Invest</Company>
+	  <RepositoryUrl>https://github.com/InfoInvest/Core</RepositoryUrl>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="InfoInvest.Core.Model" Version="6.0.0" />
