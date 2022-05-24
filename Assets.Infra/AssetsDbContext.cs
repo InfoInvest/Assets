@@ -14,7 +14,10 @@ namespace Assets.Infra
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AssetsDbContext).Assembly);
+            modelBuilder.Entity<Asset>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+            });
         }
     }
 }
